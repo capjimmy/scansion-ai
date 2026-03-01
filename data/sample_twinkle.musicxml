@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 4.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
+<score-partwise version="4.0">
+  <work>
+    <work-title>Twinkle Twinkle Little Star</work-title>
+  </work>
+  <identification>
+    <encoding>
+      <software>Scansion AI Sample</software>
+      <encoding-date>2026-02-28</encoding-date>
+    </encoding>
+  </identification>
+  <part-list>
+    <score-part id="P1">
+      <part-name>Vocal</part-name>
+    </score-part>
+  </part-list>
+  <part id="P1">
+    <!-- Measure 1: Twin-kle twin-kle -->
+    <measure number="1">
+      <attributes>
+        <divisions>1</divisions>
+        <key><fifths>0</fifths></key>
+        <time><beats>4</beats><beat-type>4</beat-type></time>
+        <clef><sign>G</sign><line>2</line></clef>
+      </attributes>
+      <direction placement="above">
+        <direction-type><metronome><beat-unit>quarter</beat-unit><per-minute>100</per-minute></metronome></direction-type>
+      </direction>
+      <note>
+        <pitch><step>C</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>begin</syllabic><text>Twin</text></lyric>
+      </note>
+      <note>
+        <pitch><step>C</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>end</syllabic><text>kle</text></lyric>
+      </note>
+      <note>
+        <pitch><step>G</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>begin</syllabic><text>twin</text></lyric>
+      </note>
+      <note>
+        <pitch><step>G</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>end</syllabic><text>kle</text></lyric>
+      </note>
+    </measure>
+    <!-- Measure 2: lit-tle star -->
+    <measure number="2">
+      <note>
+        <pitch><step>A</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>begin</syllabic><text>lit</text></lyric>
+      </note>
+      <note>
+        <pitch><step>A</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>end</syllabic><text>tle</text></lyric>
+      </note>
+      <note>
+        <pitch><step>G</step><octave>4</octave></pitch>
+        <duration>2</duration><type>half</type>
+        <lyric number="1"><syllabic>single</syllabic><text>star</text></lyric>
+      </note>
+    </measure>
+    <!-- Measure 3: How I won-der -->
+    <measure number="3">
+      <note>
+        <pitch><step>F</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>single</syllabic><text>How</text></lyric>
+      </note>
+      <note>
+        <pitch><step>F</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>single</syllabic><text>I</text></lyric>
+      </note>
+      <note>
+        <pitch><step>E</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>begin</syllabic><text>won</text></lyric>
+      </note>
+      <note>
+        <pitch><step>E</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>end</syllabic><text>der</text></lyric>
+      </note>
+    </measure>
+    <!-- Measure 4: what you are -->
+    <measure number="4">
+      <note>
+        <pitch><step>D</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>single</syllabic><text>what</text></lyric>
+      </note>
+      <note>
+        <pitch><step>D</step><octave>4</octave></pitch>
+        <duration>1</duration><type>quarter</type>
+        <lyric number="1"><syllabic>single</syllabic><text>you</text></lyric>
+      </note>
+      <note>
+        <pitch><step>C</step><octave>4</octave></pitch>
+        <duration>2</duration><type>half</type>
+        <lyric number="1"><syllabic>single</syllabic><text>are</text></lyric>
+      </note>
+    </measure>
+  </part>
+</score-partwise>
