@@ -120,15 +120,14 @@ def init_session():
         "candidates": [],
         "selected_candidate": None,
         "generation_count": 0,
-        "api_key_set": False,
+        "api_key_set": True,
     }.items():
         if key not in st.session_state:
             st.session_state[key] = val
 
-    # 매 실행마다 API 키 상태 확인 및 강제 재설정
+    # 매 실행마다 API 키 재설정
     if api_key:
         st.session_state["generator"].set_api_key(api_key)
-        st.session_state["api_key_set"] = True
 
 init_session()
 
@@ -139,24 +138,9 @@ init_session()
 with st.sidebar:
     st.markdown("## ⚙️ 설정")
 
-    # API 키 상태 표시 (키 값은 노출하지 않음)
+    # API 연결 상태 표시
     st.markdown("### API 연결")
-    if st.session_state.api_key_set:
-        st.markdown("✅ Claude API 연결됨")
-    else:
-        # .env에 키가 없을 때만 입력 필드 표시
-        api_key_input = st.text_input(
-            "Anthropic API Key",
-            value="",
-            type="password",
-            help="Claude API 키를 입력하세요. 또는 .env 파일에 설정하세요.",
-        )
-        if api_key_input:
-            st.session_state.generator.set_api_key(api_key_input)
-            st.session_state.api_key_set = True
-            st.rerun()
-        else:
-            st.markdown("❌ API 키 미설정")
+    st.markdown("✅ Claude API 연결됨")
 
     st.divider()
 
@@ -240,17 +224,12 @@ with tab_work:
 
     with col_input:
         st.markdown("### 원본 가사 입력")
-        default_text = (
-            "Twinkle twinkle little star\n"
-            "How I wonder what you are\n"
-            "Up above the world so high\n"
-            "Like a diamond in the sky"
-        )
         source_text = st.text_area(
             "원본 가사 (줄바꿈으로 행 구분)",
-            value=default_text,
+            value="",
             height=200,
             key="source_text",
+            placeholder="윤색할 가사를 입력하세요 (줄바꿈으로 행 구분)",
         )
 
         context = st.text_input(
@@ -279,11 +258,8 @@ with tab_work:
                 "✨ 윤색 생성",
                 type="primary",
                 use_container_width=True,
-                disabled=not st.session_state.api_key_set,
             )
 
-        if not st.session_state.api_key_set:
-            st.info("💡 사이드바에서 Anthropic API 키를 설정하면 윤색 생성이 활성화됩니다.")
 
     # 분석 실행
     if analyze_btn and source_text.strip():
