@@ -100,20 +100,15 @@ REGENERATION_PROMPT_TEMPLATE = """이전 생성 결과에 대한 피드백입니
 class LyricGenerator:
     """Claude API 기반 가사 생성 엔진."""
 
-    _DEFAULT_KEY = (
-        "sk-ant-api03-7Jw-aTqH19CXJG9TGsagtPS5i5d0mDBv9SqWlzTaw"
-        "NNWk0p6LBtguLKQr8WOsQI9-K9GerhQwueckDIlZYJzhg-86-vvQAA"
-    )
-
     def __init__(self, api_key: Optional[str] = None):
-        self.api_key = api_key or os.getenv("ANTHROPIC_API_KEY", "") or self._DEFAULT_KEY
+        self.api_key = api_key or os.getenv("ANTHROPIC_API_KEY", "")
         self.model = "claude-sonnet-4-20250514"
 
     def _get_client(self) -> "anthropic.Anthropic":
         """매 호출마다 클라이언트를 새로 생성 (Streamlit 세션 직렬화 대응)."""
         if not HAS_ANTHROPIC:
             raise RuntimeError("anthropic 패키지가 설치되지 않았습니다.")
-        key = self.api_key or os.getenv("ANTHROPIC_API_KEY", "") or self._DEFAULT_KEY
+        key = self.api_key or os.getenv("ANTHROPIC_API_KEY", "")
         if not key:
             raise RuntimeError(
                 "Anthropic API 키가 설정되지 않았습니다. "
@@ -122,7 +117,7 @@ class LyricGenerator:
         return anthropic.Anthropic(api_key=key)
 
     def is_available(self) -> bool:
-        key = self.api_key or os.getenv("ANTHROPIC_API_KEY", "") or self._DEFAULT_KEY
+        key = self.api_key or os.getenv("ANTHROPIC_API_KEY", "")
         return HAS_ANTHROPIC and bool(key)
 
     def set_api_key(self, key: str):
