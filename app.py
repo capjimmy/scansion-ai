@@ -98,6 +98,8 @@ st.markdown("""
     }
     div[data-testid="stSidebar"] .stMarkdown { color: #cdd6f4; }
     div[data-testid="stSidebar"] label { color: #bac2de !important; }
+    div[data-testid="stSidebar"] .stSelectbox > div > div,
+    div[data-testid="stSidebar"] .stSlider > div > div { color: #1e1e2e; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -148,7 +150,7 @@ with st.sidebar:
     st.markdown("### 언어 설정")
     source_lang = st.selectbox(
         "원본 언어",
-        options=["영어 (English)", "한국어 (Korean)"],
+        options=["자동 감지", "영어 (English)", "한국어 (Korean)"],
         index=0,
     )
     target_lang = st.selectbox(
@@ -157,7 +159,6 @@ with st.sidebar:
         index=0,
     )
 
-    src_lang_enum = Language.EN if "영어" in source_lang else Language.KO
     tgt_lang_enum = Language.KO if "한국어" in target_lang else Language.EN
 
     st.divider()
@@ -260,6 +261,16 @@ with tab_work:
                 use_container_width=True,
             )
 
+
+    # 원본 언어 결정 (자동 감지 지원)
+    def _detect_source_language(text: str) -> Language:
+        if "자동" in source_lang:
+            hangul = sum(1 for c in text if '가' <= c <= '힣')
+            total = sum(1 for c in text if c.strip())
+            return Language.KO if total > 0 and hangul / total > 0.3 else Language.EN
+        return Language.EN if "영어" in source_lang else Language.KO
+
+    src_lang_enum = _detect_source_language(source_text)
 
     # 분석 실행
     if analyze_btn and source_text.strip():
